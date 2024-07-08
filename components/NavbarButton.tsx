@@ -1,8 +1,15 @@
 import { Link } from 'expo-router';
-import { Text } from 'react-native';
+import { View } from 'react-native';
 
-export default function NavbarButton() {
+type NavbarProps = {
+    link: string
+    test: string
+}
+
+export default function NavbarButton(props: NavbarProps) {
     return (
-        <Text className="bg-slate-500">This is the navbar</Text>
+        <View className="bg-inherit items-center justify-center basis-1/5">
+            <Link className="text-white text-xl" href={props.link}>{props.test}</Link>
+        </View>
     );
 }
