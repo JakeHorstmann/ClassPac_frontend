@@ -1,7 +1,7 @@
-import { Text } from 'react-native';
+import { View } from 'react-native';
 
 export default function Header() {
     return (
-        <Text>This is the header</Text>
+        <View className="align-top pt-16 bg-zinc-600" />
     );
 }
