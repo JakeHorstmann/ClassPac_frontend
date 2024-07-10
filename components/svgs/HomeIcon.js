@@ -1,6 +1,6 @@
 import * as React from "react";
 import Svg, { Path, Circle, G, Rect } from "react-native-svg";
-const SvgHomepageIcon = (props) => (
+const SvgHomeIcon = (props) => (
   <Svg
     xmlns="http://www.w3.org/2000/svg"
     shapeRendering="geometricPrecision"
@@ -43,4 +43,4 @@ const SvgHomepageIcon = (props) => (
     </G>
   </Svg>
 );
-export default SvgHomepageIcon;
+export default SvgHomeIcon;
