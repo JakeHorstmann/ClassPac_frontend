@@ -1,17 +1,24 @@
-import { Link } from 'expo-router';
-import { View } from 'react-native';
+import { Link } from 'expo-router'
+import { Pressable, View } from 'react-native'
+import React, { forwardRef } from 'react'
 
 type NavbarProps = {
     link: string
     Icon: React.ElementType
 }
 
-export default function NavbarButton(props: NavbarProps) {
+const NavbarButton = forwardRef<View, NavbarProps>(({ link, Icon }, ref) => {
     return (
-        <View className="flex items-center justify-center basis-1/5">
-            <Link className="text-white text-xl" href={props.link}>
-                <props.Icon className="aspect-square" width="80px" height="80px" />
+        <View ref={ref} className="flex items-center justify-center basis-1/5 aspect-square">
+            <Link href={link} className="h-full w-full" asChild>
+                <Pressable>
+                    <View className="h-full w-full">
+                        <Icon width="100%" height="100%" preserveAspectRatio="xMinYMin slice" />
+                    </View>
+                </Pressable>
             </Link>
         </View>
     );
-}
+});
+
+export default NavbarButton;
