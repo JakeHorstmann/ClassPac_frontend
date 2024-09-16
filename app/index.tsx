@@ -1,7 +1,7 @@
 import { Text } from 'react-native';
 
-export default function HomeScreen() {
+export default function IndexScreen() {
     return (
-        <Text className='text-2xl bg-slate-300'>This is the home screen</Text>
+        <Text className='text-2xl bg-slate-300'>This is the index screen</Text>
     );
 }
