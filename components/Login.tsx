@@ -22,14 +22,8 @@ export default function Login() {
     }
 
     return (
-        <View>
+        <View className="h-4/5 justify-between align-center">
             <KeyboardAvoidingView behavior="padding">
-                {/* <TextInput value={email} placeholder="Email" autoCapitalize="none" onChangeText={(text) => setEmail(text)}></TextInput>
-                <TextInput secureTextEntry={true} value={password} placeholder="Password" autoCapitalize="none" onChangeText={(text) => setPassword(text)}></TextInput>
-                <>
-                    <Button title="Login" onPress={() => login(email, password)} />
-                    <Button title="Create account" onPress={logout} />
-                </> */}
                 {/* Email Input with Floating Label */}
                 <View className="mb-5 relative">
                     <Animated.Text
@@ -47,8 +41,10 @@ export default function Login() {
                     >
                         Enter email
                     </Animated.Text>
+                    {/* Spacer to align email input at bottom */}
+                    <View className="py-2" />
                     <TextInput
-                        className="border-b border-gray-300 py-2 text-lg"
+                        className="border-b border-black text-lg"
                         value={email}
                         onChangeText={setEmail}
                         onFocus={() => animateLabel(emailLabelPosition, true)}
@@ -72,8 +68,10 @@ export default function Login() {
                     >
                         Enter password
                     </Animated.Text>
+                    {/* Spacer to align password input at bottom */}
+                    <View className="py-2" />
                     <TextInput
-                        className="border-b border-gray-300 py-2 text-lg"
+                        className="border-b border-black text-lg"
                         value={password}
                         onChangeText={setPassword}
                         secureTextEntry
@@ -93,7 +91,7 @@ export default function Login() {
             </Pressable>
 
             {/* Register Navigation */}
-            <Pressable className="mt-4" onPress={() => router.push("/register/register")}>
+            <Pressable className="mt-4" onPress={() => router.push("./register")}>
                 <Text className="text-blue-500 text-center">Don't have an account? Register</Text>
             </Pressable>
         </View>

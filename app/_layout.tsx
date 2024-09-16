@@ -1,35 +1,17 @@
-import { View } from "react-native"
 import { Slot } from "expo-router"
-
-import Header from "@/components/Header"
-import Navbar from "@/components/Navbar"
-import Login from "@/components/Login"
-
-import "@/styles/global.css"
+import { View, Text } from "react-native"
 import AuthProvider from "@/components/AuthProvider"
-import { useAuth } from "@/components/AuthProvider"
-import { useRouter } from 'expo-router'
+import "@/styles/global.css"
 
 export default function RootLayout() {
     return (
         <AuthProvider>
-            <AuthLayout />
-        </AuthProvider>
-    )
-}
-
-function AuthLayout() {
-    const { user, ...rest } = useAuth()
-    const router = useRouter()
-
-    return (<>
-        {user ?
-            <View className="flex basis-full flex-col justify-between">
-                <Header />
+            <View className="h-2/5 items-center justify-center">
+                <Text>ClassPac</Text>
+            </View>
+            <View className="h-3/5 items-center">
                 <Slot />
-                <Navbar />
-            </View> :
-            <Login />
-        }
-    </>)
+            </View>
+        </AuthProvider>
+    );
 }
