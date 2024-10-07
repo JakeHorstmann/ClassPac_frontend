@@ -1,11 +1,13 @@
 import React, { createContext, useState, useEffect, useContext } from 'react'
 import { FIREBASE_AUTH } from '@/firebaseConfig'
-import { onAuthStateChanged, signInWithEmailAndPassword, signOut, User } from "firebase/auth"
+import { onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, signOut, User } from "firebase/auth"
 
 type AuthContextType = {
     user: User | null
     login: (email: string, password: string) => Promise<void>
     logout: () => Promise<void>
+    register: (email: string, password: string, firstName: string, lastName: string) => Promise<void>;
+
 }
 
 type AuthProviderType = {
@@ -24,6 +26,7 @@ export default function AuthProvider({ children }: AuthProviderType) {
     }, [])
 
     const login = async (email: string, password: string) => {
+        console.log("PRESSED LOGIN")
         try {
             const response = await signInWithEmailAndPassword(FIREBASE_AUTH, email, password)
             console.log(response)
@@ -33,16 +36,32 @@ export default function AuthProvider({ children }: AuthProviderType) {
     }
 
     const logout = async () => {
+        console.log("PRESSED LOGOUT")
         try {
             const response = await signOut(FIREBASE_AUTH);
             console.log(response)
         } catch (error) {
             console.log(error)
         }
-    };
+    }
+
+    const register = async (email: string, password: string, firstName: string, lastName: string) => {
+        console.log("PRESSED REGISTER")
+        try {
+            const response = await createUserWithEmailAndPassword(FIREBASE_AUTH, email, password);
+            if (response.user) {
+                await updateProfile(response.user, {
+                    displayName: `${firstName} ${lastName}`
+                }
+                )
+            }
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return (
-        <AuthContext.Provider value={{ user, login, logout }}>
+        <AuthContext.Provider value={{ user, login, logout, register }}>
             {children}
         </AuthContext.Provider>
     )
