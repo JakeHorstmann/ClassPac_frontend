@@ -5,9 +5,9 @@ import Header from "@/components/Header"
 import Navbar from "@/components/Navbar"
 
 import { useAuth } from "@/components/AuthProvider"
-import { useRouter } from 'expo-router'
+import { useRouter, Redirect } from 'expo-router'
 
-export default function AppLayout() {
+export default function AuthorizedLayout() {
     const { user, ...rest } = useAuth()
     const router = useRouter()
 
@@ -19,7 +19,7 @@ export default function AppLayout() {
                     <Slot />
                     <Navbar />
                 </View> :
-                router.navigate("/login")
+                <Redirect href="/" />
         }
     </>)
 }

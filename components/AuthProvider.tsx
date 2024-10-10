@@ -1,6 +1,7 @@
 import React, { createContext, useState, useEffect, useContext } from 'react'
 import { FIREBASE_AUTH } from '@/firebaseConfig'
 import { onAuthStateChanged, signInWithEmailAndPassword, createUserWithEmailAndPassword, updateProfile, signOut, User } from "firebase/auth"
+import { useRouter } from "expo-router"
 
 type AuthContextType = {
     user: User | null
@@ -18,6 +19,7 @@ const AuthContext = createContext<AuthContextType | undefined>(undefined)
 
 export default function AuthProvider({ children }: AuthProviderType) {
     const [user, setUser] = useState<User | null>(null)
+    const router = useRouter()
 
     useEffect(() => {
         onAuthStateChanged(FIREBASE_AUTH, (user) => {
@@ -29,7 +31,6 @@ export default function AuthProvider({ children }: AuthProviderType) {
         console.log("PRESSED LOGIN")
         try {
             const response = await signInWithEmailAndPassword(FIREBASE_AUTH, email, password)
-            console.log(response)
         } catch (error) {
             console.log(error)
         }
@@ -38,8 +39,7 @@ export default function AuthProvider({ children }: AuthProviderType) {
     const logout = async () => {
         console.log("PRESSED LOGOUT")
         try {
-            const response = await signOut(FIREBASE_AUTH);
-            console.log(response)
+            await signOut(FIREBASE_AUTH);
         } catch (error) {
             console.log(error)
         }
@@ -54,6 +54,9 @@ export default function AuthProvider({ children }: AuthProviderType) {
                     displayName: `${firstName} ${lastName}`
                 }
                 )
+                console.log("User was created")
+                router.push("./")
+
             }
         } catch (error) {
             console.log(error)

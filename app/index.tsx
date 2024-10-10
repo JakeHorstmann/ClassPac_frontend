@@ -1,39 +1,7 @@
-import { View, Text, KeyboardAvoidingView, Pressable } from "react-native"
-import { useState } from "react"
-import { useAuth } from "@/components/AuthProvider"
-import { useRouter } from "expo-router"
-import FloatingLabelInputBox from "@/components/FloatingLabelInputBox"
-import AuthButton from "@/components/AuthButton"
+import { Redirect } from "expo-router"
 
-export default function LoginScreen() {
-    const [email, setEmail] = useState<string>("")
-    const [password, setPassword] = useState<string>("")
-    const { user, login, logout } = useAuth()
-    const router = useRouter()
-
+export default function IndexScreen() {
     return (
-        <View className="w-4/5 border-2 border-blue-300 rounded-2xl justify-center items-center align-top">
-            <View className="w-4/5 justify-center">
-                <View className="py-4 justify-between align-center">
-
-                    <KeyboardAvoidingView behavior="padding">
-                        {/* Email Input */}
-                        <FloatingLabelInputBox label="Enter email" value={email} onChangeText={setEmail} />
-                        {/* Password Input */}
-                        <FloatingLabelInputBox label="Enter password" value={password} onChangeText={setPassword} secureTextEntry={true} />
-                    </KeyboardAvoidingView>
-
-                    {/* Login Button */}
-                    <AuthButton label="Login" onPress={() => login(email, password)} />
-                    {/* Logout Button */}
-                    <AuthButton label="Logout" onPress={() => logout()} />
-                    {/* Register Navigation */}
-                    <Pressable className="mt-4" onPress={() => router.push("./register")}>
-                        <Text className="text-blue-500 text-center">Don't have an account? Register</Text>
-                    </Pressable>
-
-                </View>
-            </View>
-        </View>
-    );
+        <Redirect href="/login/" />
+    )
 }
