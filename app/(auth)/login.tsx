@@ -8,12 +8,12 @@ import AuthButton from "@/components/AuthButton"
 export default function LoginScreen() {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
-    const { user, login } = useAuth()
+    const { user, login } = useAuth() // add user back in here
     const router = useRouter()
     return (
         <>
             {
-                user ? <Redirect href="/home/" />
+                user ? <Redirect href="/account/" />
                     :
                     <View className="w-4/5 border-2 border-blue-300 rounded-2xl justify-center items-center align-top">
                         <View className="w-4/5 justify-center">
