@@ -17,8 +17,8 @@ export default function AccountScreen() {
     }
 
     return (
-        <>
-            <Text>This is the account screen</Text>
+        <View>
+            <Text className="text-text">This is the account screen</Text>
             {/* Logout Button */}
             <AuthButton label="Logout" onPress={() => logout()} />
             <View className="flew-row items-center justify-center">
@@ -26,6 +26,6 @@ export default function AccountScreen() {
                 <CheckBox value={theme === "dark"} onValueChange={() => changeTheme("dark")} />
                 <CheckBox value={theme === "system"} onValueChange={() => changeTheme("system")} />
             </View>
-        </>
+        </View>
     );
 }

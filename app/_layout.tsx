@@ -14,7 +14,7 @@ export default function RootLayout() {
     return (
         <AuthProvider>
             <ThemeProvider value={colorScheme === "dark" ? DarkTheme : LightTheme}>
-                <SafeAreaView style={{ flex: 1 }}>
+                <SafeAreaView style={{ flex: 1, backgroundColor: colorScheme === "dark" ? "black" : "white" }}>
                     <StatusBar style="auto" />
                     <Stack screenOptions={{ headerShown: false }}>
                         <Stack.Screen name="(tabs)" />
