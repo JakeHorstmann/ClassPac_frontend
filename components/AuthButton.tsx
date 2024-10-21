@@ -9,8 +9,8 @@ interface AuthButtonProps {
 export default function AuthButton({ label, onPress }: AuthButtonProps) {
     return (
         <View className="py-2">
-            <Pressable className="bg-blue-500 p-3 rounded" onPress={onPress}>
-                <Text className="text-white text-center">{label}</Text>
+            <Pressable className="bg-box p-3 rounded" onPress={onPress}>
+                <Text className="text-text text-center">{label}</Text>
             </Pressable>
         </View>
     )

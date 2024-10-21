@@ -13,32 +13,39 @@ export default function RegisterScreen() {
     const { register } = useAuth()
     const router = useRouter()
     return (
-        <View className="w-4/5 border-2 border-blue-300 rounded-2xl justify-center items-center align-top">
-            <View className="w-4/5 justify-center">
-                <View className="py-4 justify-between align-center">
-                    <KeyboardAvoidingView behavior="padding">
-                        {/* Name Input */}
-                        <View className="flex flex-row">
-                            <View className="pr-2 w-1/2">
-                                <FloatingLabelInputBox label="First name" value={firstName} onChangeText={setFirstName} />
-                            </View>
-                            <View className="pl-2 w-1/2">
-                                <FloatingLabelInputBox label="Last name" value={lastName} onChangeText={setLastName} />
-                            </View>
+        <View className="w-full h-full">
+            <View className="h-2/5 justify-center items-center">
+                <Text className="text-text">logo here</Text>
+            </View>
+            <View className="w-full h-3/5 justify-start items-center">
+                <View className="w-4/5 border-2 border-border rounded-2xl justify-center items-center align-top">
+                    <View className="w-4/5 justify-center">
+                        <View className="py-4 justify-between align-center">
+                            <KeyboardAvoidingView behavior="padding">
+                                {/* Name Input */}
+                                <View className="flex flex-row">
+                                    <View className="pr-2 w-1/2">
+                                        <FloatingLabelInputBox label="First name" value={firstName} onChangeText={setFirstName} />
+                                    </View>
+                                    <View className="pl-2 w-1/2">
+                                        <FloatingLabelInputBox label="Last name" value={lastName} onChangeText={setLastName} />
+                                    </View>
+                                </View>
+                                {/* Email Input */}
+                                <FloatingLabelInputBox label="Email" value={email} onChangeText={setEmail} />
+                                {/* Password Input */}
+                                <FloatingLabelInputBox label="Password" value={password} onChangeText={setPassword} secureTextEntry={true} />
+
+                            </KeyboardAvoidingView>
+
+                            {/* Login Button */}
+                            <AuthButton label="Register" onPress={() => register(email, password, firstName, lastName)} />
+                            {/* Login Navigation */}
+                            <Pressable className="mt-4" onPress={() => router.push("./login/")}>
+                                <Text className="text-blue-500 text-center">Have an account? Login</Text>
+                            </Pressable>
                         </View>
-                        {/* Email Input */}
-                        <FloatingLabelInputBox label="Email" value={email} onChangeText={setEmail} />
-                        {/* Password Input */}
-                        <FloatingLabelInputBox label="Password" value={password} onChangeText={setPassword} secureTextEntry={true} />
-
-                    </KeyboardAvoidingView>
-
-                    {/* Login Button */}
-                    <AuthButton label="Register" onPress={() => register(email, password, firstName, lastName)} />
-                    {/* Login Navigation */}
-                    <Pressable className="mt-4" onPress={() => router.push("./login/")}>
-                        <Text className="text-blue-500 text-center">Have an account? Login</Text>
-                    </Pressable>
+                    </View>
                 </View>
             </View>
         </View>

@@ -23,7 +23,7 @@ export default function FloatingLabelInputBox({ label, value, onChangeText, secu
     return (
         <View className="mb-5 relative">
             <Animated.Text
-                className="absolute left-0 text-gray-400"
+                className="absolute left-0 text-text"
                 style={{
                     top: labelPosition.interpolate({
                         inputRange: [0, 1],
@@ -39,7 +39,7 @@ export default function FloatingLabelInputBox({ label, value, onChangeText, secu
             </Animated.Text>
             <View className="py-2" />
             <TextInput
-                className="border-b border-black text-lg"
+                className="border-b border-border text-lg text-text"
                 value={value}
                 onChangeText={onChangeText}
                 secureTextEntry={secureTextEntry}

@@ -9,6 +9,8 @@ module.exports = {
       colors: {
         background: "var(--bg)",
         text: "var(--text)",
+        border: "var(--border)",
+        box: "var(--box)",
       },
     },
   },

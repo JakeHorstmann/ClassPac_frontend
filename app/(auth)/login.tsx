@@ -8,28 +8,36 @@ import AuthButton from "@/components/AuthButton"
 export default function LoginScreen() {
     const [email, setEmail] = useState<string>("")
     const [password, setPassword] = useState<string>("")
-    const { user, login } = useAuth() // add user back in here
+    const { user, login } = useAuth()
     const router = useRouter()
     return (
         <>
             {
                 user ? <Redirect href="/account/" />
                     :
-                    <View className="w-4/5 border-2 border-blue-300 rounded-2xl justify-center items-center align-top">
-                        <View className="w-4/5 justify-center">
-                            <View className="py-4 justify-between align-center">
-                                <KeyboardAvoidingView behavior="padding">
-                                    {/* Email Input */}
-                                    <FloatingLabelInputBox label="Enter email" value={email} onChangeText={setEmail} />
-                                    {/* Password Input */}
-                                    <FloatingLabelInputBox label="Enter password" value={password} onChangeText={setPassword} secureTextEntry={true} />
-                                </KeyboardAvoidingView>
-                                {/* Login Button */}
-                                <AuthButton label="Login" onPress={() => login(email, password)} />
-                                {/* Register Navigation */}
-                                <Pressable className="mt-4" onPress={() => router.push("./register/")}>
-                                    <Text className="text-blue-500 text-center">Don't have an account? Register</Text>
-                                </Pressable>
+                    <View className="w-full h-full">
+                        <View className="h-2/5 justify-center items-center">
+                            <Text className="text-text">logo here</Text>
+                        </View>
+                        {/* Lower half for login handling */}
+                        <View className="w-full h-3/5 justify-start items-center">
+                            <View className="w-4/5 border-2 border-border rounded-2xl justify-center items-center align-top">
+                                <View className="w-4/5 justify-center">
+                                    <View className="py-4 justify-between align-center">
+                                        <KeyboardAvoidingView behavior="padding">
+                                            {/* Email Input */}
+                                            <FloatingLabelInputBox label="Enter email" value={email} onChangeText={setEmail} />
+                                            {/* Password Input */}
+                                            <FloatingLabelInputBox label="Enter password" value={password} onChangeText={setPassword} secureTextEntry={true} />
+                                        </KeyboardAvoidingView>
+                                        {/* Login Button */}
+                                        <AuthButton label="Login" onPress={() => login(email, password)} />
+                                        {/* Register Navigation */}
+                                        <Pressable className="mt-4" onPress={() => router.push("./register/")}>
+                                            <Text className="text-blue-500 text-center">Don't have an account? Register</Text>
+                                        </Pressable>
+                                    </View>
+                                </View>
                             </View>
                         </View>
                     </View>
