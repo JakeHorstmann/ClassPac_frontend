@@ -9,7 +9,7 @@ export default function AuthorizedTabsLayout() {
         return <Redirect href="/login" />
     }
     return (
-        <Tabs screenOptions={{}}>
+        <Tabs screenOptions={{ headerShown: false }}>
             <Tabs.Screen name="classrooms" options={{
                 tabBarIcon: () => <FontAwesome className="text-text" name="users" size={24} /> //dashboard or graduation-cap could also work here
             }} />

@@ -1,7 +1,11 @@
-import { Text } from 'react-native';
+import TopUnsafeArea from '@/components/TopUnsafeArea'
+import { View, Text } from 'react-native';
 
 export default function ReportsScreen() {
     return (
-        <Text>This is the report screen</Text>
+        <View>
+            <TopUnsafeArea />
+            <Text>This is the report screen</Text>
+        </View>
     );
 }

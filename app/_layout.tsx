@@ -1,5 +1,5 @@
 import { Stack } from "expo-router"
-import { SafeAreaView } from "react-native"
+import { SafeAreaProvider } from 'react-native-safe-area-context'
 import AuthProvider from "@/components/AuthProvider"
 import "@/styles/global.css"
 import { StatusBar } from "expo-status-bar"
@@ -14,12 +14,12 @@ export default function RootLayout() {
     return (
         <AuthProvider>
             <ThemeProvider value={colorScheme === "dark" ? DarkTheme : LightTheme}>
-                <SafeAreaView style={{ flex: 1, backgroundColor: colorScheme === "dark" ? "black" : "white" }}>
+                <SafeAreaProvider>
                     <StatusBar style="auto" />
                     <Stack screenOptions={{ headerShown: false }}>
                         <Stack.Screen name="(tabs)" />
                     </Stack>
-                </SafeAreaView>
+                </SafeAreaProvider>
             </ThemeProvider>
         </AuthProvider>
     );

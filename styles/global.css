@@ -2,18 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Make sure these colors are in sync with themes.tsx */
+
 :root {
     --bg: "white";
     --text: "black";
-    --border: "rgb(59 130 246)";
-    --box: "rgb(59 130 246)";
+    --border: "#133C55";
+    --box: "#8DA9C4";
 }
 
 @media (prefers-color-scheme: dark) {
     :root {
-        --bg: "black";
+        --bg: "#0B2545";
         --text: "white";
-        --border: "white";
-        --box: "#750E21"
+        --border: "#8DA9C4";
+        --box: "#134074";
     }
 }

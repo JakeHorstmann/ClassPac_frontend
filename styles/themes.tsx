@@ -1,23 +1,23 @@
 export const LightTheme = {
     dark: false,
     colors: {
-        primary: "black",
+        primary: "#F0A868",
         background: "white",
-        card: "pink",
+        card: "#8DA9C4",
         text: "black",
-        border: "red",
-        notification: "green",
+        border: "#133C55",
+        notification: "#564787",
     },
 }
 
 export const DarkTheme = {
     dark: true,
     colors: {
-        primary: "white",
-        background: "black",
-        card: "black",
+        primary: "#F0A868",
+        background: "#0B2545",
+        card: "#134074",
         text: "white",
-        border: "red",
-        notification: "green",
+        border: "#8DA9C4",
+        notification: "#134074",
     },
 }

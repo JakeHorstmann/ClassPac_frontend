@@ -4,13 +4,14 @@ import AuthButton from "@/components/AuthButton"
 import { useState } from "react"
 import CheckBox from "expo-checkbox"
 import { useColorScheme } from "nativewind"
+import SafeAreaView from "@/components/TopUnsafeArea"
+import TopUnsafeArea from "@/components/TopUnsafeArea"
 
 export default function AccountScreen() {
     type Themes = "light" | "dark" | "system"
     const { user, logout } = useAuth()
     const { colorScheme, setColorScheme } = useColorScheme()
     const [theme, setTheme] = useState<Themes>(colorScheme === "dark" ? "dark" : "light")
-
     const changeTheme = (theme: Themes) => {
         setTheme(theme)
         setColorScheme(theme)
@@ -18,6 +19,7 @@ export default function AccountScreen() {
 
     return (
         <View>
+            <TopUnsafeArea />
             <Text className="text-text">This is the account screen</Text>
             {/* Logout Button */}
             <AuthButton label="Logout" onPress={() => logout()} />
